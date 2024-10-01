@@ -14,3 +14,5 @@ def kick_ball():
     print("\nGoal!")
 
 kick_ball(
+    <br>
+    %time% %date% %location%
