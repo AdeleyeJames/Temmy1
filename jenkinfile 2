@@ -1,8 +1,40 @@
-Node ( Operations ) {
- {
-   (( 
-(
-Node { (Builds )" 
+def show_products(self):
+    print("\nAvailable products:")
+    for product_id, details in PRODUCTS.items():
+        print(f"{product_id}. {details['name']} - ${details['price']}")
 
-{{{{ "Gulid Bugs" }
+def add_to_cart(self, product_id):
+    if product_id in PRODUCTS:
+        product = PRODUCTS[product_id]
+        self.cart.append(product)
+        self.total += product['price']
+        print(f"Added {product['name']} to cart. Total: ${self.total}")
+    else:
+        print("Invalid product ID. Please choose again.")
 
+def input_address(self):
+    self.address = input("\nEnter your delivery address: ")
+    print(f"Address set to: {self.address}")
+
+def confirm_order(self):
+    if not self.cart:
+        print("\nYour cart is empty. Please add some items.")
+        return False
+    if not self.address:
+        print("\nNo delivery address provided.")
+        return False
+    print("\nOrder confirmed!")
+    print(f"Total: ${self.total}")
+    print(f"Delivery address: {self.address}")
+    return True
+
+def deliver(self):
+    if self.confirm_order():
+        print("\nProcessing your delivery...")
+        time.sleep(2)  # Simulate processing time
+        print("Your order is out for delivery!")
+        time.sleep(2)
+        # Simulating random delivery status
+        statuses = ["Delivered successfully", "Delivery delayed", "Out for redelivery"]
+        status = random.choice(statuses)
+        print(f"Delivery Status: {status}")
